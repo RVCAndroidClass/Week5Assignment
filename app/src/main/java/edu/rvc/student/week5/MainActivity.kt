@@ -1,20 +1,24 @@
 package edu.rvc.student.week5
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.*
+
+
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
         var txtName = findViewById<EditText>(R.id.txtName)
         var txtEmail = findViewById<EditText>(R.id.txtEmail)
@@ -38,9 +42,16 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        //Fire hidekeyboard when user taps outside any text object
+        //Place right before end right bracket function onCreate
+        findViewById<View>(android.R.id.content).setOnTouchListener { _, event ->
+            hideKeyboard()
+            false
+        }
 
     }
-    // function to hide keyboard goes right before the last right bracket of Class MainActivity
+
+// function to hide keyboard goes right before the last right bracket of Class MainActivity
 //import android.content.Context
 //import android.view.inputmethod.InputMethodManager
     fun hideKeyboard() {
@@ -52,4 +63,9 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
+
+
 }
+
